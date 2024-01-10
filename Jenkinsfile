@@ -28,11 +28,11 @@ pipeline {
             agent {label 'build-server'}
             steps {
                 withCredentials(
-                    [usernamePassword](
+                    [usernamePassword(
                         credentialsId:'sathapornp',
                         passwordVariable:'githubPassword',
                         usernameVariable:'githubUser'
-                    )  
+                    )]  
                 ){
                     sh "docker login ghcr.io -u ${env.githubUser} -p ${env.githubPassword}"
                     sh "docker push ghcr.io/sathapornp/first-ci-cd-2"
