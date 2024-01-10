@@ -21,7 +21,7 @@ pipeline {
         stage ('Build Stage (Docker)'){
             agent {label 'build-server'}
             steps {
-                sh "docker build -t ghcr.io/sathapornp/first-ci-cd-2:v_1_0_2"
+                sh "docker build -t ghcr.io/sathapornp/first-ci-cd-2:v_1_0_2 ."
             }
         }
     }
