@@ -35,7 +35,7 @@ pipeline {
                     )  
                 ){
                     sh "docker login ghcr.io -u ${env.githubUser} -p ${env.githubPassword}"
-                    sh "docker push ghcr.io/sathapornp/first-ci-cd-2:v_1_0_2"
+                    sh "docker push ghcr.io/sathapornp/first-ci-cd-2"
                 }
             }
         }
