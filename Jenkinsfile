@@ -6,7 +6,7 @@ pipeline {
     environment {
 
         APP_NAME = "first-ci-cd"
-    
+        IMAGE_NAME = "ghcr.io/sathapornp/first-ci-cd-2"
     }
  
     stages {
@@ -16,6 +16,30 @@ pipeline {
             steps {
 
                 sh "echo ${env.APP_NAME}"
+            }
+        }
+        stage ('Build Stage (Docker)'){
+            agent {label 'build-server'}
+            steps {
+                sh "docker build -t ghcr.io/sathapornp/first-ci-cd-2 ."
+            }
+        }
+        stage('Deliver Docker Image'){
+            agent {label 'build-server'}
+            steps {
+                withCredentials(
+                    [usernamePassword(
+                        credentialsId:'sathapornp',
+                        passwordVariable:'githubPassword',
+                        usernameVariable:'githubUser'
+                    )]  
+                ){
+                    sh "docker login ghcr.io -u ${env.githubUser} -p ${env.githubPassword}"
+                    sh "docker tag ${env.IMAGE_NAME} ${env.IMAGE_NAME}:${env.BUILD_NUMBER}"
+                    sh "docker push ${env.IMAGE_NAME}"
+                    sh "docker rmi ${env.IMAGE_NAME}"
+                    sh "docker rmi ${env.IMAGE_NAME} ${env.IMAGE_NAME}:${env.BUILD_NUMBER}"
+                }
             }
         }
     }
