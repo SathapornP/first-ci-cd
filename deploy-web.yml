@@ -21,9 +21,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-service 
+  name: p-can-service
   labels:
-    app: hello-service
+    app: p-can-service
 spec:
   selector:
     app: first-ci-cd-2
