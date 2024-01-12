@@ -10,7 +10,7 @@ spec:
   template:
     metadata:
       labels:
-        app: first-ci-cd-2
+        app: user13
     spec:
       containers:
         - name: user13-server
