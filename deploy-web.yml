@@ -15,6 +15,7 @@ spec:
       containers:
         - name: user13-server
           image: ghcr.io/sathapornp/first-ci-cd-2
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 ---
