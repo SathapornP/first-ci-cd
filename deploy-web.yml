@@ -13,7 +13,7 @@ spec:
         app: first-ci-cd-2
     spec:
       containers:
-        - name: first-ci-cd-2-server
+        - name: user13-server
           image: ghcr.io/sathapornp/first-ci-cd-2
           ports:
             - containerPort: 80
@@ -21,9 +21,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: p-can-service
+  name: user13-service
   labels:
-    app: p-can-service
+    app: user13-service
 spec:
   selector:
     app: first-ci-cd-2

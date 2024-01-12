@@ -5,7 +5,7 @@ pipeline {
 
     environment {
 
-        APP_NAME = "first-ci-cd"
+        APP_NAME = "user13-service"
         IMAGE_NAME = "ghcr.io/sathapornp/first-ci-cd-2"
     }
  
