@@ -50,7 +50,7 @@ pipeline {
                     try {
                         sh "kubectl delete -f deploy-web.yml"
                     }   catch (e) {
-                    echo "image can not delete"
+                        sh "echo image can not delete"
                     }
                 
                     sh "kubectl apply -f deploy-web.yml"
